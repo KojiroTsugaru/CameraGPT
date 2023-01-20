@@ -1,0 +1,23 @@
+{
+  "pins" : [
+    {
+      "identity" : "cameraview",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/brettfazio/CameraView",
+      "state" : {
+        "revision" : "bb528e129ac23f2888dee51a309bbd4b10374673",
+        "version" : "0.0.1"
+      }
+    },
+    {
+      "identity" : "openaiswift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/adamrushy/OpenAISwift",
+      "state" : {
+        "revision" : "ed0c6f2dacbac4b3f4028751ed10fcfbf71a8a1d",
+        "version" : "1.1.1"
+      }
+    }
+  ],
+  "version" : 2
+}
