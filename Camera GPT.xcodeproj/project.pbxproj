@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		31045B7D2985057200D1145B /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 31045B7B2985057200D1145B /* Model.xcdatamodeld */; };
 		31CBCB9A2968F47A003F3556 /* Camera_GPTApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31CBCB992968F47A003F3556 /* Camera_GPTApp.swift */; };
 		31CBCB9C2968F47A003F3556 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31CBCB9B2968F47A003F3556 /* ContentView.swift */; };
 		31CBCB9E2968F47C003F3556 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 31CBCB9D2968F47C003F3556 /* Assets.xcassets */; };
@@ -24,6 +25,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		31045B7C2985057200D1145B /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		31CBCB962968F47A003F3556 /* Camera GPT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Camera GPT.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		31CBCB992968F47A003F3556 /* Camera_GPTApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Camera_GPTApp.swift; sourceTree = "<group>"; };
 		31CBCB9B2968F47A003F3556 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -106,6 +108,7 @@
 		31CBCBAD2968F8BC003F3556 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				31045B7B2985057200D1145B /* Model.xcdatamodeld */,
 				31CBCBAE2968F8D4003F3556 /* ScanData.swift */,
 				31CBCBB929691152003F3556 /* CharGPTViewModel.swift */,
 				31CBCBBF2977793A003F3556 /* MessageModel.swift */,
@@ -200,6 +203,7 @@
 				31CBCB9C2968F47A003F3556 /* ContentView.swift in Sources */,
 				31CBCB9A2968F47A003F3556 /* Camera_GPTApp.swift in Sources */,
 				31CBCBB42968FF15003F3556 /* TextRecognizer.swift in Sources */,
+				31045B7D2985057200D1145B /* Model.xcdatamodeld in Sources */,
 				31CBCBB22968FADB003F3556 /* ScannerView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -437,6 +441,19 @@
 			productName = OpenAISwift;
 		};
 /* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		31045B7B2985057200D1145B /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				31045B7C2985057200D1145B /* Model.xcdatamodel */,
+			);
+			currentVersion = 31045B7C2985057200D1145B /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 31CBCB8E2968F47A003F3556 /* Project object */;
 }

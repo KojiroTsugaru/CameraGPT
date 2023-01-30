@@ -16,7 +16,11 @@ struct MessageModel: Identifiable {
     
     init(isSentByUser: Bool, messageText: String){
         self.isSentByUser = isSentByUser
+        
+        // trimming whitespaces
         self.messageText = messageText
+        self.messageText.trimmingCharacters(in: .whitespaces)
+        
         if self.isSentByUser { self.backgroundColor = Color.gray.opacity(0.3)} else { self.backgroundColor = Color.blue.opacity(0.3) }
     }
 }

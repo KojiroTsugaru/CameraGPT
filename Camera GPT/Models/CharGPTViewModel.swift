@@ -9,14 +9,12 @@ import OpenAISwift
 import Foundation
 
 final class ChatGPTViewModel: ObservableObject {
-    init() {
-        setup()
-    }
+    init() {}
     
     private var client: OpenAISwift?
     
     func setup() {
-        client = OpenAISwift(authToken: "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")
+        client = OpenAISwift(authToken: "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")
     }
     
     func send(text: String, completion: @escaping (String) -> Void ){
@@ -28,7 +26,7 @@ final class ChatGPTViewModel: ObservableObject {
                 let output = model.choices.first?.text ?? ""
                 completion(output)
             case .failure:
-                completion("Fail Why?")
+                break
             }
         })
     }

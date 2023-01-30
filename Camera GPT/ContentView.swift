@@ -10,6 +10,9 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         HomeScreenView()
+            .environmentObject(ScanDatas())
+            .environmentObject(Responses())
+            .environmentObject(ChatGPTViewModel())
     }
 }
 

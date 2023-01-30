@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-let firstMessage = MessageModel(isSentByUser: false, messageText: "Hello, I'm Chat GPT. Ask me any questions, then I can answer them for you:)")
+let firstMessage = MessageModel(isSentByUser: false, messageText: "Hello, I'm Chat GPT. Ask me any questions.")
 
 struct messageTextView: View {
     let message: MessageModel
@@ -42,7 +42,6 @@ struct messageTextView: View {
 }
     
 let chatModel = ChatGPTViewModel()
-var messages = [String]()
 
 struct ChatView: View {
     
@@ -51,14 +50,24 @@ struct ChatView: View {
     
     var body: some View {
         VStack(alignment: .leading){
+            Rectangle()
+                .frame(height: 70)
+                .foregroundColor(.green.opacity(0.2))
+                .edgesIgnoringSafeArea(.all)
             ScrollView(.vertical){
-                ForEach(messages) { message in
-                    HStack{
-                        messageTextView(message: message)
-                        Spacer()
+                ScrollViewReader { value in
+                    ForEach(messages) { message in
+                        HStack{
+                            messageTextView(message: message)
+                            Spacer()
+                        }
+                    }
+                    .onChange(of: messages.count) { _ in
+                        value.scrollTo(messages.last?.id, anchor: .center)
                     }
                 }
             }
+            .padding(.horizontal)
             Spacer()
             HStack{
                 TextField("Ask Something...", text: $text)
@@ -78,25 +87,24 @@ struct ChatView: View {
                         }
                     }
                 } label: {
-                    Text("Ask")
-                        .font(.system(size: 18))
-                        .padding(.horizontal)
-                        .padding(.vertical, 1)
-                        .background(RoundedRectangle(cornerRadius: 30)
-                            .foregroundColor(.gray.opacity(0.3)))
+                    Image(systemName: "paperplane")
+                        .font(.system(size: 20))
+                        .foregroundColor(.blue.opacity(0.8))
+                        .padding(.horizontal, 3)
                 }
             }
-            .padding()
+            .padding(12)
             .background(RoundedRectangle(cornerRadius: 30)
                 .foregroundColor(.gray.opacity(0.2)))
+            .padding(.horizontal)
         }
-        .padding()
         .onAppear(){
             messages.append(firstMessage)
+            chatModel.setup()
         }
+        .background(Color.gray.opacity(0.05))
     }
 }
-
 struct ChatView_Previews: PreviewProvider {
     static var previews: some View {
         ChatView()

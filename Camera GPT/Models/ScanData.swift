@@ -7,6 +7,8 @@
 
 import Foundation
 
+// scandata model
+
 struct ScanData: Identifiable {
     var id = UUID()
     var content: String
@@ -16,11 +18,21 @@ struct ScanData: Identifiable {
     }
 }
 
-struct ResponseModel: Identifiable {
+class ScanDatas: ObservableObject {
+    @Published var scanDatas = [ScanData]()
+}
+
+// response model
+
+struct ResponseModel: Identifiable{
     var id = UUID()
     var content: String
     
     init(content: String) {
         self.content = content
     }
+}
+
+class Responses: ObservableObject {
+    @Published var responses = [ResponseModel]()
 }

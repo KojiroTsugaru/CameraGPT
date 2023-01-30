@@ -8,25 +8,22 @@
 import SwiftUI
 
 struct HistoryView: View {
-    @State public var showScannerSheet = false
-    @State private var scannedTexts:[ScanData] = []
-    @State private var responses = [ResponseModel]()
-    
-    @ObservedObject var ChatModel = ChatGPTViewModel()
+    @EnvironmentObject var scannedTexts: ScanDatas
+    @EnvironmentObject var responses: Responses
     
     var body: some View {
         NavigationView{
             VStack{
-                if scannedTexts.count > 0 {
+                if scannedTexts.scanDatas.count > 0 {
                     List{
-                        ForEach(responses){ response in
+                        ForEach(responses.responses){ response in
                             NavigationLink(
                                 destination:ScrollView{Text(response.content)},
                                 label: {
                                     Text(response.content).lineLimit(1)
                                 })
                         }
-                        ForEach(scannedTexts){ response in
+                        ForEach(scannedTexts.scanDatas){ response in
                             NavigationLink(
                                 destination:ScrollView{Text(response.content)},
                                 label: {
@@ -34,6 +31,7 @@ struct HistoryView: View {
                                 })
                         }
                     }
+                    .navigationTitle("Your Scanned Items")
                 }
                 else{
                     VStack(alignment: .center, spacing: 10){
@@ -48,35 +46,19 @@ struct HistoryView: View {
                     }
                     .foregroundColor(.gray)
                     .padding()
+                    .navigationTitle("Welcome to Camera GPT")
+                    .navigationBarTitleDisplayMode(.inline)
                 }
             }
-                .navigationTitle("Camera GPT")
-                .sheet(isPresented: $showScannerSheet, content: {
-                    self.makeScannerView()
-                })
         }
-    }
-    
-    private func makeScannerView()-> ScannerView {
-        ScannerView(completion: {
-            textPerPage in
-            if let outputText = textPerPage?.joined(separator: "\n").trimmingCharacters(in: .whitespacesAndNewlines){
-                let newScanData = ScanData(content: outputText)
-                self.scannedTexts.append(newScanData)
-
-                // send request to Open AI
-                ChatModel.send(text: outputText){ response in
-                    let newResponse = ResponseModel(content: response)
-                    responses.append(newResponse)
-                }
-            }
-            self.showScannerSheet = false
-        })
     }
 }
 
 struct HistoryView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeScreenView()
+        HistoryView()
+            .environmentObject(ScanDatas())
+            .environmentObject(Responses())
+            .environmentObject(ChatGPTViewModel())
     }
 }
