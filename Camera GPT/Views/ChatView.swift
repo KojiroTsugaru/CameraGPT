@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-let firstMessage = MessageModel(isSentByUser: false, messageText: "Hello, I'm Chat GPT. Ask me any questions.")
+let firstMessage = MessageModel(isSentByUser: false, messageText: "Hello, I'm Chat GPT. Ask me any question!")
 
 struct messageTextView: View {
     let message: MessageModel
@@ -26,7 +26,7 @@ struct messageTextView: View {
                     }
                     ZStack{
                         Text(message.messageText)
-                            .padding(8)
+                            .padding(12)
                             .background(
                                 RoundedRectangle(cornerRadius: 25)
                                     .foregroundColor(message.backgroundColor)
@@ -44,7 +44,7 @@ struct messageTextView: View {
 let chatModel = ChatGPTViewModel()
 
 struct ChatView: View {
-    
+    @Binding var isEditing: Bool
     @State var messages = [MessageModel]()
     @State var text = ""
     
@@ -52,7 +52,7 @@ struct ChatView: View {
         VStack(alignment: .leading){
             Rectangle()
                 .frame(height: 70)
-                .foregroundColor(.green.opacity(0.2))
+                .foregroundColor(.cyan.opacity(0.5))
                 .edgesIgnoringSafeArea(.all)
             ScrollView(.vertical){
                 ScrollViewReader { value in
@@ -70,10 +70,11 @@ struct ChatView: View {
             .padding(.horizontal)
             Spacer()
             HStack{
-                TextField("Ask Something...", text: $text)
+                TextField("Ask Something...", text: $text) { editing in
+                    isEditing = editing
+                }
                 Button {
-                    // この一行の意味はいまいちわからん
-                    guard !text.trimmingCharacters(in: .whitespaces).isEmpty else { return }
+                    guard !text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else { return }
                     
                     let newMessage = MessageModel(isSentByUser: true, messageText: text)
                     messages.append(newMessage)
@@ -105,8 +106,8 @@ struct ChatView: View {
         .background(Color.gray.opacity(0.05))
     }
 }
-struct ChatView_Previews: PreviewProvider {
-    static var previews: some View {
-        ChatView()
-    }
-}
+//struct ChatView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ChatView(isEditing: true)
+//    }
+//}

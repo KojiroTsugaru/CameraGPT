@@ -14,10 +14,11 @@ final class ChatGPTViewModel: ObservableObject {
     private var client: OpenAISwift?
     
     func setup() {
-        client = OpenAISwift(authToken: "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")
+        client = OpenAISwift(authToken: "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")
     }
     
     func send(text: String, completion: @escaping (String) -> Void ){
+        self.setup()
         client?.sendCompletion(with: text,
                                maxTokens: 500,
                                completionHandler: { result in

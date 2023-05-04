@@ -8,13 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		31045B7D2985057200D1145B /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 31045B7B2985057200D1145B /* Model.xcdatamodeld */; };
+		314163A029AC4EF800B48152 /* Persistance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3141639F29AC4EF800B48152 /* Persistance.swift */; };
+		319FD6C42A04395200CE98B1 /* ResponseDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 319FD6C32A04395200CE98B1 /* ResponseDetailView.swift */; };
 		31CBCB9A2968F47A003F3556 /* Camera_GPTApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31CBCB992968F47A003F3556 /* Camera_GPTApp.swift */; };
 		31CBCB9C2968F47A003F3556 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31CBCB9B2968F47A003F3556 /* ContentView.swift */; };
 		31CBCB9E2968F47C003F3556 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 31CBCB9D2968F47C003F3556 /* Assets.xcassets */; };
 		31CBCBA12968F47C003F3556 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 31CBCBA02968F47C003F3556 /* Preview Assets.xcassets */; };
 		31CBCBA82968F4BC003F3556 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31CBCBA72968F4BC003F3556 /* HistoryView.swift */; };
 		31CBCBAC2968F58F003F3556 /* CameraView in Frameworks */ = {isa = PBXBuildFile; productRef = 31CBCBAB2968F58F003F3556 /* CameraView */; };
-		31CBCBAF2968F8D4003F3556 /* ScanData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31CBCBAE2968F8D4003F3556 /* ScanData.swift */; };
+		31CBCBAF2968F8D4003F3556 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31CBCBAE2968F8D4003F3556 /* Model.swift */; };
 		31CBCBB22968FADB003F3556 /* ScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31CBCBB12968FADB003F3556 /* ScannerView.swift */; };
 		31CBCBB42968FF15003F3556 /* TextRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31CBCBB32968FF15003F3556 /* TextRecognizer.swift */; };
 		31CBCBB729691059003F3556 /* OpenAISwift in Frameworks */ = {isa = PBXBuildFile; productRef = 31CBCBB629691059003F3556 /* OpenAISwift */; };
@@ -26,13 +28,15 @@
 
 /* Begin PBXFileReference section */
 		31045B7C2985057200D1145B /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		3141639F29AC4EF800B48152 /* Persistance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistance.swift; sourceTree = "<group>"; };
+		319FD6C32A04395200CE98B1 /* ResponseDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseDetailView.swift; sourceTree = "<group>"; };
 		31CBCB962968F47A003F3556 /* Camera GPT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Camera GPT.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		31CBCB992968F47A003F3556 /* Camera_GPTApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Camera_GPTApp.swift; sourceTree = "<group>"; };
 		31CBCB9B2968F47A003F3556 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		31CBCB9D2968F47C003F3556 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		31CBCBA02968F47C003F3556 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		31CBCBA72968F4BC003F3556 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
-		31CBCBAE2968F8D4003F3556 /* ScanData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanData.swift; sourceTree = "<group>"; };
+		31CBCBAE2968F8D4003F3556 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		31CBCBB02968F99C003F3556 /* Camera-GPT-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Camera-GPT-Info.plist"; sourceTree = SOURCE_ROOT; };
 		31CBCBB12968FADB003F3556 /* ScannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerView.swift; sourceTree = "<group>"; };
 		31CBCBB32968FF15003F3556 /* TextRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextRecognizer.swift; sourceTree = "<group>"; };
@@ -78,6 +82,7 @@
 				31CBCBAD2968F8BC003F3556 /* Models */,
 				31CBCBA92968F4C4003F3556 /* Views */,
 				31CBCB9B2968F47A003F3556 /* ContentView.swift */,
+				3141639F29AC4EF800B48152 /* Persistance.swift */,
 				31CBCB992968F47A003F3556 /* Camera_GPTApp.swift */,
 				31CBCBB32968FF15003F3556 /* TextRecognizer.swift */,
 				31CBCB9D2968F47C003F3556 /* Assets.xcassets */,
@@ -101,6 +106,7 @@
 				31CBCBA72968F4BC003F3556 /* HistoryView.swift */,
 				31CBCBB12968FADB003F3556 /* ScannerView.swift */,
 				31CBCBBD2977729C003F3556 /* ChatView.swift */,
+				319FD6C32A04395200CE98B1 /* ResponseDetailView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -109,7 +115,7 @@
 			isa = PBXGroup;
 			children = (
 				31045B7B2985057200D1145B /* Model.xcdatamodeld */,
-				31CBCBAE2968F8D4003F3556 /* ScanData.swift */,
+				31CBCBAE2968F8D4003F3556 /* Model.swift */,
 				31CBCBB929691152003F3556 /* CharGPTViewModel.swift */,
 				31CBCBBF2977793A003F3556 /* MessageModel.swift */,
 			);
@@ -194,11 +200,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				31CBCBAF2968F8D4003F3556 /* ScanData.swift in Sources */,
+				31CBCBAF2968F8D4003F3556 /* Model.swift in Sources */,
 				31CBCBBA29691152003F3556 /* CharGPTViewModel.swift in Sources */,
 				31CBCBA82968F4BC003F3556 /* HistoryView.swift in Sources */,
 				31CBCBBC29697022003F3556 /* HomeScreenView.swift in Sources */,
 				31CBCBBE2977729C003F3556 /* ChatView.swift in Sources */,
+				314163A029AC4EF800B48152 /* Persistance.swift in Sources */,
+				319FD6C42A04395200CE98B1 /* ResponseDetailView.swift in Sources */,
 				31CBCBC02977793A003F3556 /* MessageModel.swift in Sources */,
 				31CBCB9C2968F47A003F3556 /* ContentView.swift in Sources */,
 				31CBCB9A2968F47A003F3556 /* Camera_GPTApp.swift in Sources */,

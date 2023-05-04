@@ -10,6 +10,7 @@ import SwiftUI
 struct HomeScreenView: View {
     let icons = ["house.fill", "camera.circle.fill", "ellipsis.message"]
     @State var tabSelected = 0
+    @State private var isEditing = false
     @EnvironmentObject var ChatModel: ChatGPTViewModel
     @EnvironmentObject var responses: Responses
     @EnvironmentObject var scannedTexts: ScanDatas
@@ -30,9 +31,17 @@ struct HomeScreenView: View {
                             if outputText.count <= 120 {
                                 ChatModel.send(text: outputText){ response in
                                     DispatchQueue.main.async {
-                                        let newResponse = ResponseModel(content: response)
+                                        let trimmed = response.trimmingCharacters(in: .whitespacesAndNewlines)
+                                        let newResponse = ResponseModel(question: outputText, content: trimmed)
                                         responses.responses.append(newResponse)
                                     }
+                                }
+                            }
+                            else{
+                                DispatchQueue.main.async {
+                                    let error_message = "Error: Scanned text was too long."
+                                    let newResponse = ResponseModel(question: error_message, content: error_message)
+                                    responses.responses.append(newResponse)
                                 }
                             }
                         }
@@ -40,7 +49,7 @@ struct HomeScreenView: View {
                     })
                     .edgesIgnoringSafeArea(.all)
                 case 2:
-                    ChatView()
+                    ChatView(isEditing: $isEditing)
                 default:
                     Text("Nothing")
                 }
@@ -48,24 +57,27 @@ struct HomeScreenView: View {
             Spacer()
             Divider()
             // Custom tab bar
-            HStack (alignment: .bottom){
-                ForEach(0..<3) { num in
-                    Button {
-                        tabSelected = num
-                    } label: {
-                        if num == 1 {
-                            Spacer()
-                            Image(systemName: icons[num])
-                                .font(.system(size: 60))
-                                .foregroundColor(tabSelected == num ? .black : .cyan)
-                            Spacer()
-                        }
-                        else {
-                            Spacer()
-                            Image(systemName: icons[num])
-                                .font(.system(size: 25))
-                                .foregroundColor(tabSelected == num ? .black : .gray)
-                            Spacer()
+            if !isEditing {
+                HStack (alignment: .bottom){
+                    ForEach(0..<3) { num in
+                        Button {
+                            tabSelected = num
+                        } label: {
+                            if num == 1 {
+                                Spacer()
+                                Image(systemName: icons[num])
+                                    .font(.system(size: 60))
+                                    .foregroundColor(tabSelected == num ? .black : .cyan)
+                                Spacer()
+                            }
+                            else {
+                                
+                                Spacer()
+                                Image(systemName: icons[num])
+                                    .font(.system(size: 25))
+                                    .foregroundColor(tabSelected == num ? .black : .gray)
+                                Spacer()
+                            }
                         }
                     }
                 }

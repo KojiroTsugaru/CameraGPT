@@ -27,8 +27,10 @@ class ScanDatas: ObservableObject {
 struct ResponseModel: Identifiable{
     var id = UUID()
     var content: String
+    var question: String
     
-    init(content: String) {
+    init(question: String, content: String) {
+        self.question = question
         self.content = content
     }
 }

@@ -6,10 +6,13 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct HistoryView: View {
     @EnvironmentObject var scannedTexts: ScanDatas
     @EnvironmentObject var responses: Responses
+    
+    // For Coredata
     
     var body: some View {
         NavigationView{
@@ -18,16 +21,9 @@ struct HistoryView: View {
                     List{
                         ForEach(responses.responses){ response in
                             NavigationLink(
-                                destination:ScrollView{Text(response.content)},
+                                destination: ResponseDetailView(question: response.question, response: response.content),
                                 label: {
-                                    Text(response.content).lineLimit(1)
-                                })
-                        }
-                        ForEach(scannedTexts.scanDatas){ response in
-                            NavigationLink(
-                                destination:ScrollView{Text(response.content)},
-                                label: {
-                                    Text(response.content).lineLimit(1)
+                                    Text(response.question).lineLimit(1)
                                 })
                         }
                     }
